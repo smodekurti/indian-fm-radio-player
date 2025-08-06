@@ -1,0 +1,208 @@
+# Additional Files for the Project
+
+## .gitignore
+```
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+
+# Production
+/build
+
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+```
+
+## public/manifest.json
+```json
+{
+  "short_name": "FM Radio",
+  "name": "Indian FM Radio Player",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "description": "Listen to live FM stations from across India"
+}
+```
+
+## src/reportWebVitals.js
+```javascript
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+export default reportWebVitals;
+```
+
+## postcss.config.js
+```javascript
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+```
+
+## .env.example
+```
+# Example environment variables
+REACT_APP_API_BASE_URL=https://api.example.com
+REACT_APP_ANALYTICS_ID=your-analytics-id
+REACT_APP_VERSION=$npm_package_version
+```
+
+## CHANGELOG.md
+```markdown
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [1.0.0] - 2025-01-XX
+
+### Added
+- Initial release of Indian FM Radio Player
+- Support for 25+ Indian FM stations
+- Beautiful glassmorphism UI design
+- Favorites and recently played functionality
+- City-wise filtering
+- Volume controls and mute functionality
+- Responsive design for all devices
+- Real-time connection status indicators
+
+### Technical Features
+- React 18 with modern hooks
+- Tailwind CSS for styling
+- HTML5 Audio API integration
+- CORS-aware error handling
+- Optimized for performance
+
+## [Unreleased]
+
+### Planned
+- Backend proxy for CORS bypass
+- User authentication
+- Playlist creation
+- Social sharing features
+- Offline mode
+- PWA capabilities
+```
+
+## CONTRIBUTING.md
+```markdown
+# Contributing to Indian FM Radio Player
+
+Thank you for your interest in contributing! Here are some guidelines to help you get started.
+
+## Development Setup
+
+1. Fork and clone the repository
+2. Install dependencies: `npm install`
+3. Start development server: `npm start`
+4. Make your changes
+5. Test thoroughly
+6. Submit a pull request
+
+## Code Style
+
+- Use ESLint and Prettier for formatting
+- Follow React best practices
+- Write meaningful commit messages
+- Add comments for complex logic
+
+## Adding New Stations
+
+1. Edit `src/utils/stations.js`
+2. Follow the existing station object structure
+3. Test the stream URL in VLC or similar player
+4. Mark `verified: false` if CORS-blocked
+5. Include proper metadata (city, state, genre)
+
+## Bug Reports
+
+Please include:
+- Steps to reproduce
+- Expected vs actual behavior
+- Browser and OS information
+- Console errors if any
+
+## Feature Requests
+
+Before submitting:
+- Check existing issues
+- Provide clear use case
+- Consider implementation complexity
+```
+
+## LICENSE
+```
+MIT License
+
+Copyright (c) 2025 Indian FM Radio Player
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
