@@ -190,10 +190,12 @@ const RadioPlayer = () => {
                     {currentStation.frequency} FM • {currentStation.city}, {currentStation.state}
                   </p>
                   <p className="text-sm text-gray-300">{currentStation.genre}</p>
-                  {isPlaying && <div className="flex items-center mt-2">
-                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></div>
-                    <span className="text-sm text-red-400">Now Playing</span>
-                  </div>}
+                  {isPlaying && (
+                    <div className="flex items-center mt-2">
+                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></div>
+                      <span className="text-sm text-red-400">Now Playing</span>
+                    </div>
+                  )}
                 </div>
               </div>
               
@@ -352,3 +354,53 @@ const RadioPlayer = () => {
                           </p>
                         </div>
                       </div>
+                      
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleFavorite(station);
+                          }}
+                          className={`p-1 rounded transition-colors ${
+                            isFavorite(station) 
+                              ? 'text-red-400 hover:text-red-300' 
+                              : 'text-gray-400 hover:text-white'
+                          }`}
+                        >
+                          <Heart className="w-4 h-4" fill={isFavorite(station) ? 'currentColor' : 'none'} />
+                        </button>
+                        
+                        {currentStation?.id === station.id && (
+                          <div className="flex items-center">
+                            {isPlaying ? (
+                              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                            ) : (
+                              <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Info Footer */}
+        <div className="mt-8 text-center text-sm text-gray-400">
+          <div className="mb-4 p-4 bg-yellow-900/20 border border-yellow-600/30 rounded-lg text-yellow-200">
+            <h4 className="font-semibold mb-2">⚠️ CORS Limitations Notice</h4>
+            <p className="text-sm">Most real radio streams are blocked by browser CORS policies. This demonstrates the UI and functionality.</p>
+            <p className="text-xs mt-1">Try stations marked as verified. Real implementation would require a backend proxy or browser extension.</p>
+          </div>
+          <p>Featuring popular FM stations from major Indian cities • Total: {indianFMStations.length} stations</p>
+          <p className="mt-1 text-xs">Some streams may be geo-restricted or temporarily unavailable</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RadioPlayer;
